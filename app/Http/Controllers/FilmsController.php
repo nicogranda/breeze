@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Films; 
+use Illuminate\Support\Facades\Log;
 
 class FilmsController extends Controller
 {
@@ -11,7 +13,10 @@ class FilmsController extends Controller
      */
     public function index()
     {
-        //
+        $films = Films::get(); // Accede al Modelo
+        // return $films;
+        Log::info($films);
+        return view('films.films',['films' => $films]); // envia los datos del modelo a la vista
     }
 
     /**
@@ -33,9 +38,9 @@ class FilmsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        
     }
 
     /**
